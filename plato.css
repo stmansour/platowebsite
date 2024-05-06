@@ -19,7 +19,7 @@ body {
     align-items: center;
     justify-content: space-between; /* Adjusts children spacing */
     text-align: center;
-    background-color: #228f30; /* Default green, changes with status */
+    /* background-color: #228f30; Default green, changes with status */
     color: white; /* Ensures text is white */
     padding: 10px 0; /* Adds padding to the top and bottom */
 }
@@ -56,6 +56,6 @@ body {
 }
 
 .error {
-    background-color: #FFEB3B; /* Yellow for error */
+    background-color: #887733; /* Yellow for error */
 }
 
