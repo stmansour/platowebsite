@@ -55,3 +55,7 @@ body {
     background-color: #882230; /* Red background for failure */
 }
 
+.error {
+    background-color: #FFEB3B; /* Yellow for error */
+}
+
