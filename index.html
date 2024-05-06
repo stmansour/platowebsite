@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PLATO - Development Server</title>
+    <link rel="stylesheet" href="plato.css">
+  </head>
+  <body>
+	  <h1><center>Welcome to the PLATO Development Server</center></h1>
+	  <table align="center" width="850" border=0>
+	      <tr>
+	          <td valign="top">
+		      <a href="viewer/index.html">Metrics Viewer</a>
+		  </td>
+	          <td valign="top">
+		      Download latest CSV database set:<br>
+		      <ul>
+		          <li><a href="csv/USDJPYdata.tar.gz">USDJPY</a></li>
+		      </ul>
+		  </td>
+	          <td align="right" valign="top">
+
+<div id="statusBox" style="width: 150px; height: 150px; border: 1px solid black;">
+    <!-- Status icon will be displayed here -->
+</div>
+<script>
+    fetch('/sync/status.txt')
+        .then(response => response.text())
+        .then(data => {
+            const box = document.getElementById('statusBox');
+	    let statusMessage = 'FAILED';
+	    let imageFile = 'images/platosad.jpeg';
+            if (data.includes("Success")) {
+	        statusMessage = 'SUCCESS';
+                imageFile = 'images/platohappy.jpeg';
+		box.className = 'success';
+            } else {
+		box.className = 'failure';
+            }
+	    box.innerHTML = '<div class="sync-title">SYNC</div><img src="' +
+	    	imageFile + '" alt="' + statusMessage +
+		'"><div class="status-message">' + statusMessage + '</div>';
+        });
+</script>
+
+		  
+		  </td>
+	      </tr>
+	  </table>
+  </body>
+</html>
