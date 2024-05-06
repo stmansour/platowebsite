@@ -22,12 +22,12 @@
 				</ul>
 			</td>
 			<td align="right" valign="top">
-
 				<div id="statusBox" style="width: 150px; height: 150px; border: 1px solid black;">
 					<!-- Status icon will be displayed here -->
 				</div>
+				<span id="syncinfo"></span>
 				<script>
-					fetch('/sync/status.txt')
+					fetch('./sync/status.txt')
 						.then(response => {
 							if (!response.ok) {
 								throw new Error('Network response was not ok');
@@ -35,6 +35,9 @@
 							return response.text();
 						}).then(data => {
 							const box = document.getElementById('statusBox');
+							const syncInfo = document.getElementById('syncinfo');
+							let lastUpdated = data.split('-')[1].trim();  // Extract the date part after the hyphen
+
 							let statusMessage = 'FAILED';
 							let imageFile = 'images/platosad.jpeg';
 							if (data.includes("Success")) {
@@ -47,11 +50,15 @@
 							box.innerHTML = '<div class="sync-title">SYNC</div><img src="' +
 								imageFile + '" alt="' + statusMessage +
 								'"><div class="status-message">' + statusMessage + '</div>';
+							syncInfo.innerHTML = 'Last Updated:<br>' + lastUpdated; // Update the syncinfo text
 						}).catch(error => {
 							console.error('Error fetching the status:', error);
 							const box = document.getElementById('statusBox');
-							box.className = 'error'; // Set class to error
-							box.innerHTML = '<div class="sync-title">SYNC</div><img src="images/platoerror.jpeg" alt="Error"><div class="status-message">ERROR</div>';
+							const syncInfo = document.getElementById('syncinfo');
+							box.className = 'error';
+							box.innerHTML = '<div class="sync-title">SYNC</div><img src="images/platoerror.jpeg" alt="Error">' +
+								'<div class="status-message">ERROR</div>';
+							syncInfo.textContent = 'Update unavailable';
 						});
 				</script>
 			</td>

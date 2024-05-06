@@ -59,3 +59,6 @@ body {
     background-color: #887733; /* Yellow for error */
 }
 
+#syncinfo {
+    font-size: 0.75em; /* Sets the font size to 75% of the inherited size */
+}
