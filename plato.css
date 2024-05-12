@@ -5,60 +5,52 @@ body {
     background-color: #F9F7E7;
     color: #3E3315;
     font-family: 'Arial', sans-serif;
-    font-size: 1.2em;          /* Standard font size */
+    font-size: 1.2em;
     margin: 0;
     padding: 20px;
 }
 
-#statusBox {
+#statusBox, #gdeltStatusBox {
     width: 150px;
     height: 150px;
     border: 3px solid #000;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between; /* Adjusts children spacing */
+    justify-content: space-between;
     text-align: center;
-    /* background-color: #228f30; Default green, changes with status */
-    color: white; /* Ensures text is white */
-    padding: 10px 0; /* Adds padding to the top and bottom */
+    padding: 10px 0;
+    color: white;  /* Ensure text is white */
 }
 
-#statusBox .sync-title {
-    font-size: 24px;
-    font-weight: bold;
-    flex-grow: 1; /* Allows the element to expand */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#statusBox img {
+#statusBox img, #gdeltStatusBox img {
     width: 100px;
     height: 100px;
 }
 
-#statusBox .status-message {
-    font-size: 24px;
+#statusBox .sync-title, #gdeltStatusBox .sync-title,
+#statusBox .status-message, #gdeltStatusBox .status-message {
+    font-size: 18px;
     font-weight: bold;
-    flex-grow: 1; /* Allows the element to expand */
+    flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: inherit;  /* Inherit color from parent */
 }
 
 .success {
-    background-color: #228f30; /* Green background for success */
+    background-color: #228f30;
 }
 
 .failure {
-    background-color: #882230; /* Red background for failure */
+    background-color: #882230;
 }
 
 .error {
-    background-color: #887733; /* Yellow for error */
+    background-color: #887733;
 }
 
-#syncinfo {
-    font-size: 0.75em; /* Sets the font size to 75% of the inherited size */
+#syncinfo, #gdeltSyncInfo {
+    font-size: 0.75em;
 }
