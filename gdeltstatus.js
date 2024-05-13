@@ -3,7 +3,8 @@ function fetchGDELTStatus() {
         .then(response => response.text())
         .then(data => {
             const lines = data.trim().split('\n');
-            const startDate = lines[0].split(':')[1].trim(); // Extract the date part from the first line
+            // Properly extract the full date and time from the first line, assuming the format "Program Started......: 2024-05-11 11:56:44 PDT"
+            const startDate = lines[0].split(': ').pop(); // This captures everything after "Program Started......: "
             const results = parseGDELTLog(data);
             updateGDELTStatusDisplay(results, startDate);
         }).catch(error => {
@@ -40,19 +41,37 @@ function updateGDELTStatusDisplay(results, checkedDate) {
     const box = document.getElementById('gdeltStatusBox');
     const syncInfo = document.getElementById('gdeltSyncInfo');
 
+    // Convert the full date string to a Date object and format it
+    checkedDate = new Date(checkedDate); // Ensure this string is correct as per the input log format
+    checkedDate = checkedDate.toLocaleString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+    });
+
     switch(results.status) {
         case 'success':
             box.style.backgroundColor = 'green';
-            box.innerHTML = '<div class="sync-title">GDELT SYNC</div><img src="images/platohappy.jpeg" alt="Success">';
+            box.innerHTML = '<div class="sync-title">GDELT SYNC</div>' +
+                            '<img src="images/platoghappy.jpeg" alt="Success">' +
+                            '<div class="status-message">SUCCESS</div>';
             break;
         case 'review':
             box.style.backgroundColor = 'yellow';
-            box.innerHTML = `<div class="sync-title">GDELT REVIEW</div><img src="images/platopuzzled.png" alt="Review Needed"><p>${results.detail}</p>`;
+            box.innerHTML = `<div class="sync-title">GDELT REVIEW</div>` +
+                            `<img src="images/platopuzzled.png" alt="Review Needed">` +
+                            `<p>${results.detail}</p>` +
+                            '<div class="status-message">REVIEW</div>';
             break;
         default:
             box.style.backgroundColor = 'red';
-            box.innerHTML = '<div class="sync-title">GDELT ERROR</div><img src="images/platoerror.jpeg" alt="Error">';
+            box.innerHTML = '<div class="sync-title">GDELT ERROR</div>' +
+                            '<img src="images/platoerror.jpeg" alt="Error">' +
+                            '<div class="status-message">ERROR</div>';
             break;
     }
-    syncInfo.innerHTML = 'Last Updated:<br>' + checkedDate;  // Use the extracted date
+    syncInfo.innerHTML = 'Last Checked:<br>' + checkedDate;
 }

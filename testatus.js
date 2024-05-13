@@ -1,8 +1,3 @@
-/**
- * Status Handlers for the nightly updates of PLATO SQL database
- * from the Trading Economics API.
- */
-
 function fetchStatus() {
     fetch('./sync/status.txt')
         .then(response => {
@@ -13,7 +8,17 @@ function fetchStatus() {
         }).then(data => {
             const box = document.getElementById('statusBox');
             const syncInfo = document.getElementById('syncinfo');
-            let lastUpdated = data.split('-')[1].trim();  // Extract the date part after the hyphen
+            let lastUpdated = new Date(data.split('-')[1].trim());  // Convert the extracted date string to a Date object
+
+            // Format the date into a more readable form
+            lastUpdated = lastUpdated.toLocaleString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric',
+                hour: 'numeric',
+                minute: '2-digit',
+                hour12: true
+            });
 
             let statusMessage = 'FAILED';
             let imageFile = 'images/platosad.jpeg';
@@ -27,7 +32,7 @@ function fetchStatus() {
             box.innerHTML = '<div class="sync-title">TE SYNC</div><img src="' +
                 imageFile + '" alt="' + statusMessage +
                 '"><div class="status-message">' + statusMessage + '</div>';
-            syncInfo.innerHTML = 'Last Updated:<br>' + lastUpdated; // Update the syncinfo text
+            syncInfo.innerHTML = 'Last Updated:<br>' + lastUpdated;
         }).catch(error => {
             console.error('Error fetching the status:', error);
             const box = document.getElementById('statusBox');

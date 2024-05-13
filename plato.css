@@ -40,15 +40,15 @@ body {
 }
 
 .success {
-    background-color: #228f30;
+    background-color: green;
 }
 
 .failure {
-    background-color: #882230;
+    background-color: red;
 }
 
 .error {
-    background-color: #887733;
+    background-color: yellow;
 }
 
 #syncinfo, #gdeltSyncInfo {
