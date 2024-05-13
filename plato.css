@@ -12,31 +12,31 @@ body {
 
 #statusBox, #gdeltStatusBox {
     width: 150px;
-    height: 150px;
-    border: 3px solid #000;
+    height: 200px;
+    /* border: 3px solid #000; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around; /* Distributes children evenly, with equal space around them */
     text-align: center;
-    padding: 10px 0;
-    color: white;  /* Ensure text is white */
+    padding: 5px; /* Reducing padding might help fit content better */
+    color: white;
+    overflow: hidden; /* Ensures nothing spills out */
 }
 
 #statusBox img, #gdeltStatusBox img {
     width: 100px;
     height: 100px;
+    margin-bottom: 5px; /* Reduced space between the image and text */
 }
 
 #statusBox .sync-title, #gdeltStatusBox .sync-title,
 #statusBox .status-message, #gdeltStatusBox .status-message {
     font-size: 18px;
     font-weight: bold;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: inherit;  /* Inherit color from parent */
+    color: inherit;
+    margin: 0; /* Zero margin to ensure no extra space is taken */
+    align-self: center; /* Center aligning self within the flex container */
 }
 
 .success {
@@ -48,7 +48,7 @@ body {
 }
 
 .error {
-    background-color: yellow;
+    background-color: orange;
 }
 
 #syncinfo, #gdeltSyncInfo {

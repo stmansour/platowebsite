@@ -15,17 +15,17 @@ function fetchGDELTStatus() {
 
 function parseGDELTLog(data) {
     const lines = data.trim().split('\n');
-    // Minimal parsing example to detect if it is a standard log
     if (lines.length < 10 || !lines.some(line => line.includes("Program Finished"))) {
         return { status: 'error' };  // Not enough lines or missing key line
     }
 
+    // Parsing each relevant line using a more robust and targeted approach
     const metrics = {
-        totalMetrics: parseInt(lines[3].split(':')[1].trim()),
-        inserts: parseInt(lines[5].split(':')[1].trim()),
-        updates: parseInt(lines[6].split(':')[1].trim()),
-        verified: parseInt(lines[7].split(':')[1].trim()),
-        miscompared: parseInt(lines[8].split(':')[1].trim())
+        totalMetrics: parseInt(lines.find(line => line.startsWith("Total metrics seen")).split(':')[1].trim()),
+        inserts: parseInt(lines.find(line => line.startsWith("Total SQL inserts")).split(':')[1].trim()),
+        updates: parseInt(lines.find(line => line.startsWith("Total SQL updates")).split(':')[1].trim()),
+        verified: parseInt(lines.find(line => line.startsWith("Verified Correct")).split(':')[1].trim()),
+        miscompared: parseInt(lines.find(line => line.startsWith("Miscompared")).split(':')[1].trim())
     };
 
     if ((metrics.inserts + metrics.updates === metrics.totalMetrics && metrics.verified === 0) || metrics.verified === metrics.totalMetrics) {
@@ -60,11 +60,11 @@ function updateGDELTStatusDisplay(results, checkedDate) {
                             '<div class="status-message">SUCCESS</div>';
             break;
         case 'review':
-            box.style.backgroundColor = 'yellow';
+            box.style.backgroundColor = 'orange';
             box.innerHTML = `<div class="sync-title">GDELT REVIEW</div>` +
-                            `<img src="images/platopuzzled.png" alt="Review Needed">` +
-                            `<p>${results.detail}</p>` +
-                            '<div class="status-message">REVIEW</div>';
+                            `<img src="images/platopuzzled.jpeg" alt="Review Needed">` +
+                            `${results.detail}`; // +
+                            // '<div class="status-message">REVIEW</div>';
             break;
         default:
             box.style.backgroundColor = 'red';
