@@ -73,5 +73,5 @@ function updateGDELTStatusDisplay(results, checkedDate) {
                             '<div class="status-message">ERROR</div>';
             break;
     }
-    syncInfo.innerHTML = 'Last Checked:<br>' + checkedDate;
+    syncInfo.innerHTML = 'Last Updated:<br>' + checkedDate;
 }
