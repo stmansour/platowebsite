@@ -8,7 +8,9 @@ function fetchStatus() {
         }).then(data => {
             const box = document.getElementById('statusBox');
             const syncInfo = document.getElementById('syncinfo');
-            let lastUpdated = new Date(data.split('-')[1].trim());  // Convert the extracted date string to a Date object
+            const lines = data.split('\n');
+            let firstLine = lines[0];
+            let lastUpdated = new Date(firstLine.split('-')[1].trim());  // Convert the extracted date string to a Date object
 
             // Format the date into a more readable form
             lastUpdated = lastUpdated.toLocaleString('en-US', {
@@ -22,7 +24,7 @@ function fetchStatus() {
 
             let statusMessage = 'FAILED';
             let imageFile = 'images/platosad.jpeg';
-            if (data.includes("Success")) {
+            if (firstLine.includes("Success")) {
                 statusMessage = 'SUCCESS';
                 imageFile = 'images/platohappy.jpeg';
                 box.className = 'success';
@@ -32,7 +34,15 @@ function fetchStatus() {
             box.innerHTML = '<div class="sync-title">TE SYNC</div><img src="' +
                 imageFile + '" alt="' + statusMessage +
                 '"><div class="status-message">' + statusMessage + '</div>';
+
             syncInfo.innerHTML = 'Last Updated:<br>' + lastUpdated;
+
+            // Add any additional lines from the status.txt file
+            for (let i = 1; i < lines.length; i++) {
+                if (lines[i].trim() !== '') {
+                    syncInfo.innerHTML += '<br>' + lines[i];
+                }
+            }
         }).catch(error => {
             console.error('Error fetching the status:', error);
             const box = document.getElementById('statusBox');
