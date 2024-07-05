@@ -35,7 +35,7 @@ function fetchStatus() {
                 imageFile + '" alt="' + statusMessage +
                 '"><div class="status-message">' + statusMessage + '</div>';
 
-            syncInfo.innerHTML = 'Last Updated:<br>' + lastUpdated;
+            syncInfo.innerHTML = 'Last Updated: <b>' + lastUpdated + '</b>';
 
             // Add any additional lines from the status.txt file
             for (let i = 1; i < lines.length; i++) {
