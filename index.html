@@ -5,26 +5,53 @@
     <title>PLATO - Development Server</title>
     <link rel="stylesheet" href="plato.css">
     <script src="testatus.js"></script>
-    <script src="gdeltstatus.js"></script> <!-- New script for GDELT status -->
+    <script src="gdeltstatus.js"></script>  <!-- Script for GDELT status -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             fetchStatus();  // Existing status fetch for Trading Economics
-            fetchGDELTStatus();  // New function to fetch GDELT status
+            fetchGDELTStatus();  // Function to fetch GDELT status
         });
     </script>
+    <style>
+        .command-bar {
+            background-color: #1C1C1C;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .command-bar a, .command-bar span {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .command-bar a:hover {
+            background-color: #4CAF50;
+        }
+        .command-bar span {
+            cursor: default;
+            background-color: #555555;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>
-        <center>Welcome to the PLATO Development Server</center>
-    </h1>
+    <div class="command-bar">
+        <span>Home</span>
+        <a href="downloads.html">Downloads</a>
+    </div>
+    <h1><center>Welcome to the PLATO Development Server</center></h1>
     <table align="center" width="950" border="0">
         <tr>
             <td>
                 <img src="images/data.jpeg" alt="">
                 Download latest CSV database set:<br><br>
                 <center>
-                    <a href="csv/USDJPYdata.tar.gz">USDJPY
+                    <a href="csv/USDJPYdata.tar.gz">USDJPY</a>
                 </center>
             </td>
             <td align="left" valign="top" width="325">
@@ -41,22 +68,16 @@
             </td>
         </tr>
         <tr>
-            <td colspan="4" valign="center" align="center" height="25">
-
-            </td>
+            <td colspan="4" valign="center" align="center" height="25"></td>
         </tr>
-        <tr><td colspan="4"> <hr>  </td></tr>
         <tr>
             <td>
-                <a href="viewer/index.html">
-                    <img src="images/viewer.jpeg" alt="">
-                    <center>
-                        Metrics Viewer
-                    </center>
-                </a>
+                <img src="images/viewer.jpeg" alt="">
+                <center>
+                    <a href="viewer/index.html">Metrics Viewer</a>
+                </center>
             </td>
-            <td colspan="3" valign="center" align="center">
-            </td>
+            <td colspan="3" valign="center" align="center"></td>
         </tr>
     </table>
 </body>
