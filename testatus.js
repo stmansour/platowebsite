@@ -10,7 +10,14 @@ function fetchStatus() {
             const syncInfo = document.getElementById('syncinfo');
             const lines = data.split('\n');
             let firstLine = lines[0];
-            let lastUpdated = new Date(firstLine.split('-')[1].trim());  // Convert the extracted date string to a Date object
+            let ss = firstLine.split('-');
+            if  (ss.length > 1) {
+                firstLine = ss[1];
+                dateString = firstLine.trim();
+            }
+
+            // Manually parse the date string to a Date object
+            let lastUpdated = new Date(Date.parse(dateString));
 
             // Format the date into a more readable form
             lastUpdated = lastUpdated.toLocaleString('en-US', {
@@ -24,7 +31,7 @@ function fetchStatus() {
 
             let statusMessage = 'FAILED';
             let imageFile = 'images/platosad.jpeg';
-            if (firstLine.includes("Success")) {
+            if (lines[0].toLocaleLowerCase().includes("success")) {
                 statusMessage = 'SUCCESS';
                 imageFile = 'images/platohappy.jpeg';
                 box.className = 'success';
