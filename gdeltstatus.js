@@ -54,20 +54,19 @@ function updateGDELTStatusDisplay(results, checkedDate) {
 
     switch(results.status) {
         case 'success':
-            box.style.backgroundColor = 'green';
+            box.className = 'success';
             box.innerHTML = '<div class="sync-title">GDELT SYNC</div>' +
-                            '<img src="images/platoghappy.jpeg" alt="Success">' +
+                            '<img src="images/platohappy.jpeg" alt="Success">' +
                             '<div class="status-message">SUCCESS</div>';
             break;
         case 'review':
-            box.style.backgroundColor = 'orange';
+            box.className = 'error';
             box.innerHTML = `<div class="sync-title">GDELT REVIEW</div>` +
                             `<img src="images/platopuzzled.jpeg" alt="Review Needed">` +
-                            `${results.detail}`; // +
-                            // '<div class="status-message">REVIEW</div>';
+                            `${results.detail}`;
             break;
         default:
-            box.style.backgroundColor = 'red';
+            box.className = 'failure';
             box.innerHTML = '<div class="sync-title">GDELT ERROR</div>' +
                             '<img src="images/platoerror.jpeg" alt="Error">' +
                             '<div class="status-message">ERROR</div>';
