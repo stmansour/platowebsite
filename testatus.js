@@ -30,10 +30,10 @@ function fetchStatus() {
             });
 
             let statusMessage = 'FAILED';
-            let imageFile = 'images/platosad.jpeg';
+            let imageFile = 'images/platosad.jpg';
             if (lines[0].toLocaleLowerCase().includes("success")) {
                 statusMessage = 'SUCCESS';
-                imageFile = 'images/platohappy.jpeg';
+                imageFile = 'images/platohappy.jpg';
                 box.className = 'success';
             } else {
                 box.className = 'failure';
@@ -55,7 +55,7 @@ function fetchStatus() {
             const box = document.getElementById('statusBox');
             const syncInfo = document.getElementById('syncinfo');
             box.className = 'error';
-            box.innerHTML = '<div class="sync-title">SYNC</div><img src="images/platoerror.jpeg" alt="Error">' +
+            box.innerHTML = '<div class="sync-title">SYNC</div><img src="images/platopuzzled.jpg" alt="Error">' +
                 '<div class="status-message">ERROR</div>';
             syncInfo.textContent = 'Update unavailable';
         });

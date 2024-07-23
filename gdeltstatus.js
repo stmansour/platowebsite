@@ -56,19 +56,19 @@ function updateGDELTStatusDisplay(results, checkedDate) {
         case 'success':
             box.className = 'success';
             box.innerHTML = '<div class="sync-title">GDELT SYNC</div>' +
-                            '<img src="images/platohappy.jpeg" alt="Success">' +
+                            '<img src="images/platohappy.jpg" alt="Success">' +
                             '<div class="status-message">SUCCESS</div>';
             break;
         case 'review':
             box.className = 'error';
             box.innerHTML = `<div class="sync-title">GDELT REVIEW</div>` +
-                            `<img src="images/platopuzzled.jpeg" alt="Review Needed">` +
+                            `<img src="images/platopuzzled.jpg" alt="Review Needed">` +
                             `${results.detail}`;
             break;
         default:
             box.className = 'failure';
             box.innerHTML = '<div class="sync-title">GDELT ERROR</div>' +
-                            '<img src="images/platoerror.jpeg" alt="Error">' +
+                            '<img src="images/platosad.jpg" alt="Error">' +
                             '<div class="status-message">ERROR</div>';
             break;
     }
