@@ -100,35 +100,59 @@ body {
     background-color: #555555;
 }
 
-/* Table Styling */
-table {
+/* General Table Styling */
+table.general-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-th, td {
+table.general-table th, table.general-table td {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: left;
 }
 
-th {
+table.general-table th {
     background-color: #4CAF50;
     color: #1C1C1C; /* Dark color for text */
     font-weight: bold;
 }
 
-td {
+table.general-table td {
     background-color: #FFFFFF;
     color: #1C1C1C;
 }
 
-tr:nth-child(even) {
+table.general-table tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-tr:hover {
+table.general-table tr:hover {
     background-color: #ddd;
+}
+
+/* Specific Table Styling for Index Page */
+table.index-table {
+    width: auto; /* Not full width */
+    border: none; /* No borders */
+    margin: 20px auto;
+}
+
+table.index-table th, table.index-table td {
+    border: none; /* No borders */
+    padding: 10px;
+    text-align: center;
+}
+
+table.index-table th {
+    background-color: transparent; /* No background */
+    color: #1C1C1C; /* Dark color for text */
+    font-weight: bold;
+}
+
+table.index-table td {
+    background-color: transparent; /* No background */
+    color: #1C1C1C;
 }
