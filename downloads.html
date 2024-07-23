@@ -54,63 +54,52 @@
             cursor: default;
             background-color: #555555;
         }
+        .no-downloads {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #555;
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const files = [
-                { title: "Software Distribution 1", filePath: "path/to/your/file1.tar.gz" },
-                { title: "Software Distribution 2", filePath: "path/to/your/file2.tar.gz" }
-                // Add more files as needed
+                // Example file entries
+                // { title: "Software Distribution 1", filePath: "downloads/software_name-1.0-linux-x86_64.tar.gz", hash: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" },
+                // Add your file entries here
             ];
 
             const tableBody = document.getElementById("downloads-table-body");
 
-            files.forEach((file, index) => {
-                const row = document.createElement("tr");
-                
-                const titleCell = document.createElement("td");
-                titleCell.textContent = file.title;
-                row.appendChild(titleCell);
+            if (files.length === 0) {
+                const noDownloadsMessage = document.createElement("div");
+                noDownloadsMessage.className = "no-downloads";
+                noDownloadsMessage.textContent = "No downloads available at this time.";
+                document.querySelector(".downloads").appendChild(noDownloadsMessage);
+            } else {
+                files.forEach((file, index) => {
+                    const row = document.createElement("tr");
+                    
+                    const titleCell = document.createElement("td");
+                    titleCell.textContent = file.title;
+                    row.appendChild(titleCell);
 
-                const linkCell = document.createElement("td");
-                const link = document.createElement("a");
-                link.href = file.filePath;
-                link.innerHTML = `<b>${file.filePath.split('/').pop()}</b>`;
-                linkCell.appendChild(link);
-                
-                const checksumDiv = document.createElement("div");
-                checksumDiv.className = "checksum";
-                checksumDiv.textContent = "SHA256: ";
-                const checksumSpan = document.createElement("span");
-                checksumSpan.id = `checksum${index}`;
-                checksumSpan.textContent = "Loading...";
-                checksumDiv.appendChild(checksumSpan);
-                linkCell.appendChild(checksumDiv);
-                
-                row.appendChild(linkCell);
-                tableBody.appendChild(row);
-
-                generateChecksum(file.filePath, `checksum${index}`);
-            });
-        });
-
-        function generateChecksum(filePath, elementId) {
-            fetch(filePath)
-                .then(response => response.blob())
-                .then(blob => {
-                    const reader = new FileReader();
-                    reader.onload = function() {
-                        const buffer = reader.result;
-                        crypto.subtle.digest('SHA-256', buffer)
-                            .then(hashBuffer => {
-                                const hashArray = Array.from(new Uint8Array(hashBuffer));
-                                const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-                                document.getElementById(elementId).textContent = hashHex;
-                            });
-                    };
-                    reader.readAsArrayBuffer(blob);
+                    const linkCell = document.createElement("td");
+                    const link = document.createElement("a");
+                    link.href = file.filePath;
+                    link.innerHTML = `<b>${file.filePath.split('/').pop()}</b>`;
+                    linkCell.appendChild(link);
+                    
+                    const checksumDiv = document.createElement("div");
+                    checksumDiv.className = "checksum";
+                    checksumDiv.textContent = `SHA256: ${file.hash}`;
+                    linkCell.appendChild(checksumDiv);
+                    
+                    row.appendChild(linkCell);
+                    tableBody.appendChild(row);
                 });
-        }
+            }
+        });
     </script>
 </head>
 <body>
