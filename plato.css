@@ -109,7 +109,7 @@ table.general-table {
 }
 
 table.general-table th, table.general-table td {
-    border: 1px solid #ddd;
+    border: 1px solid #888;
     padding: 10px;
     text-align: left;
 }
@@ -162,3 +162,4 @@ table.index-table td {
     font-size: 0.75em; /* Make the font size smaller */
     color: rgba(40, 40, 40, 1); /* Softer dark shade */
 }
+
