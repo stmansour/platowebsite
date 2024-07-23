@@ -71,3 +71,64 @@ body {
     font-size: 0.85em;
     color: #555;
 }
+
+/* Command Bar Styling */
+.command-bar {
+    background-color: #1C1C1C;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.command-bar a, .command-bar span {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.command-bar a:hover {
+    background-color: #4CAF50;
+}
+
+.command-bar span {
+    cursor: default;
+    background-color: #555555;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #4CAF50;
+    color: #1C1C1C; /* Dark color for text */
+    font-weight: bold;
+}
+
+td {
+    background-color: #FFFFFF;
+    color: #1C1C1C;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
