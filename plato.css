@@ -115,7 +115,7 @@ table.general-table th, table.general-table td {
 }
 
 table.general-table th {
-    background-color: #4CAF50;
+    background-color: #E0E0E0; /* Light grey background */
     color: #1C1C1C; /* Dark color for text */
     font-weight: bold;
 }

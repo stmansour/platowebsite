@@ -10,50 +10,6 @@
             width: 80%;
             margin: auto;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .checksum {
-            font-size: 0.85em;
-            color: #555; /* Match the color with the rest of the site */
-        }
-        .download-item a {
-            text-decoration: none;
-            color: #007BFF;
-            font-weight: bold;
-        }
-        .command-bar {
-            background-color: #1C1C1C;
-            padding: 10px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .command-bar a, .command-bar span {
-            color: #FFFFFF;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .command-bar a:hover {
-            background-color: #4CAF50;
-        }
-        .command-bar span {
-            cursor: default;
-            background-color: #555555;
-        }
         .no-downloads {
             text-align: center;
             margin-top: 20px;
@@ -65,20 +21,20 @@
         document.addEventListener("DOMContentLoaded", function() {
             const files = [
                 {
-		  title: "Plato - ver 3.2",
-		  filePath: "downloads/plato.3.2-20240722T221328.macos.arm64.tar.gz",
-		  hash: "29d90cfa547bfb385b2a86b26aa18ef28f5756b222fba0c8a842fb9f8b5be4d2"
-		},
+                    title: "Plato - ver 3.2",
+                    filePath: "downloads/plato.3.2-20240722T221328.macos.arm64.tar.gz",
+                    hash: "29d90cfa547bfb385b2a86b26aa18ef28f5756b222fba0c8a842fb9f8b5be4d2"
+                },
                 {
-		  title: "Plato - ver 3.2",
-		  filePath: "downloads/plato.3.2-20240722T223911.macos.x86_64.tar.gz",
-		  hash: "d290af4a8fb5fd98c71d271123b089abab0ecb3640aa5f67f1dbaccbd11e8a02"
-		},
+                    title: "Plato - ver 3.2",
+                    filePath: "downloads/plato.3.2-20240722T223911.macos.x86_64.tar.gz",
+                    hash: "d290af4a8fb5fd98c71d271123b089abab0ecb3640aa5f67f1dbaccbd11e8a02"
+                },
                 {
-		  title: "Plato - ver 3.2",
-		  filePath: "downloads/plato.3.2-20240722T221957.linux.x86_64.tar.gz",
-		  hash: "2ce221f25bd92e05fe6f0228741dd6ced4931b02f5f56646a98a6f890d686420"
-		},
+                    title: "Plato - ver 3.2",
+                    filePath: "downloads/plato.3.2-20240722T221957.linux.x86_64.tar.gz",
+                    hash: "2ce221f25bd92e05fe6f0228741dd6ced4931b02f5f56646a98a6f890d686420"
+                }
                 // Add your file entries here
             ];
 
@@ -122,7 +78,7 @@
     </div>
     <div class="downloads">
         <h1>Software Distributions</h1>
-        <table>
+        <table class="general-table">
             <thead>
                 <tr>
                     <th>Title</th>
